@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  generate:
+    build: .
+    volumes:
+      - .:/usr/build
+    working_dir: /usr/build
+    entrypoint: "make generate"
