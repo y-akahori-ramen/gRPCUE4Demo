@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "github.com/y-akahori-ramen/gRPCUE4Demo/server";
+
+message UnaryDemoRequest {
+    string name = 1;
+}
+
+message UnaryDemoResponse {
+    string message = 1;
+}
+
+service UnaryDemoService {
+    rpc Request (UnaryDemoRequest) returns (UnaryDemoResponse) {}
+}
