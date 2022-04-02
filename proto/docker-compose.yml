@@ -3,6 +3,8 @@ services:
   generate:
     build: .
     volumes:
-      - .:/usr/build
-    working_dir: /usr/build
+      - .:/usr/build/proto
+      - ../server/proto:/usr/build/server/proto
+      - ../gRPCDemoProject/Source/gRPCDemoProject/proto:/usr/build/gRPCDemoProject/Source/gRPCDemoProject/proto
+    working_dir: /usr/build/proto
     entrypoint: "make generate"

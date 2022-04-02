@@ -31,5 +31,6 @@ WORKDIR /usr/local/bin
 COPY --from=builder  /home/.local/bin .
 # Builder stage GOPATH is /root/go/bin
 COPY --from=builder /root/go/bin .
+# Install build tools
 RUN apt update
-RUN apt install make
+RUN apt install -y make nkf
