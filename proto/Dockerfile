@@ -9,7 +9,7 @@ RUN /bin/sh cmake-linux.sh -- --skip-license
 RUN rm cmake-linux.sh
 ENV MY_INSTALL_DIR /home/.local
 WORKDIR $MY_INSTALL_DIR
-RUN git clone --recurse-submodules -b v1.45.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
+RUN git clone --recurse-submodules -b v1.41.1 --depth 1 --shallow-submodules https://github.com/grpc/grpc
 WORKDIR $MY_INSTALL_DIR/grpc/cmake/build
 RUN cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR ../..
 ##  Compile error workaround  https://stackoverflow.com/questions/62107520/unable-to-build-grpc-v1-28-1-inside-a-container
