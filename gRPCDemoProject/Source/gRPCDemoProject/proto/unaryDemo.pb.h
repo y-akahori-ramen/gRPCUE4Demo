@@ -56,21 +56,24 @@ struct TableStruct_unaryDemo_2eproto {
   static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_unaryDemo_2eproto;
+namespace grpcDemo {
 class UnaryDemoRequest;
 struct UnaryDemoRequestDefaultTypeInternal;
 extern UnaryDemoRequestDefaultTypeInternal _UnaryDemoRequest_default_instance_;
 class UnaryDemoResponse;
 struct UnaryDemoResponseDefaultTypeInternal;
 extern UnaryDemoResponseDefaultTypeInternal _UnaryDemoResponse_default_instance_;
+}  // namespace grpcDemo
 PROTOBUF_NAMESPACE_OPEN
-template<> ::UnaryDemoRequest* Arena::CreateMaybeMessage<::UnaryDemoRequest>(Arena*);
-template<> ::UnaryDemoResponse* Arena::CreateMaybeMessage<::UnaryDemoResponse>(Arena*);
+template<> ::grpcDemo::UnaryDemoRequest* Arena::CreateMaybeMessage<::grpcDemo::UnaryDemoRequest>(Arena*);
+template<> ::grpcDemo::UnaryDemoResponse* Arena::CreateMaybeMessage<::grpcDemo::UnaryDemoResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
+namespace grpcDemo {
 
 // ===================================================================
 
 class UnaryDemoRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UnaryDemoRequest) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:grpcDemo.UnaryDemoRequest) */ {
  public:
   inline UnaryDemoRequest() : UnaryDemoRequest(nullptr) {}
   ~UnaryDemoRequest() override;
@@ -164,7 +167,7 @@ class UnaryDemoRequest final :
   void InternalSwap(UnaryDemoRequest* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UnaryDemoRequest";
+    return "grpcDemo.UnaryDemoRequest";
   }
   protected:
   explicit UnaryDemoRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -200,7 +203,7 @@ class UnaryDemoRequest final :
   std::string* _internal_mutable_name();
   public:
 
-  // @@protoc_insertion_point(class_scope:UnaryDemoRequest)
+  // @@protoc_insertion_point(class_scope:grpcDemo.UnaryDemoRequest)
  private:
   class _Internal;
 
@@ -214,7 +217,7 @@ class UnaryDemoRequest final :
 // -------------------------------------------------------------------
 
 class UnaryDemoResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UnaryDemoResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:grpcDemo.UnaryDemoResponse) */ {
  public:
   inline UnaryDemoResponse() : UnaryDemoResponse(nullptr) {}
   ~UnaryDemoResponse() override;
@@ -308,7 +311,7 @@ class UnaryDemoResponse final :
   void InternalSwap(UnaryDemoResponse* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UnaryDemoResponse";
+    return "grpcDemo.UnaryDemoResponse";
   }
   protected:
   explicit UnaryDemoResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -344,7 +347,7 @@ class UnaryDemoResponse final :
   std::string* _internal_mutable_message();
   public:
 
-  // @@protoc_insertion_point(class_scope:UnaryDemoResponse)
+  // @@protoc_insertion_point(class_scope:grpcDemo.UnaryDemoResponse)
  private:
   class _Internal;
 
@@ -371,7 +374,7 @@ inline void UnaryDemoRequest::clear_name() {
   name_.ClearToEmpty();
 }
 inline const std::string& UnaryDemoRequest::name() const {
-  // @@protoc_insertion_point(field_get:UnaryDemoRequest.name)
+  // @@protoc_insertion_point(field_get:grpcDemo.UnaryDemoRequest.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -379,11 +382,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void UnaryDemoRequest::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:UnaryDemoRequest.name)
+  // @@protoc_insertion_point(field_set:grpcDemo.UnaryDemoRequest.name)
 }
 inline std::string* UnaryDemoRequest::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:UnaryDemoRequest.name)
+  // @@protoc_insertion_point(field_mutable:grpcDemo.UnaryDemoRequest.name)
   return _s;
 }
 inline const std::string& UnaryDemoRequest::_internal_name() const {
@@ -398,7 +401,7 @@ inline std::string* UnaryDemoRequest::_internal_mutable_name() {
   return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
 inline std::string* UnaryDemoRequest::release_name() {
-  // @@protoc_insertion_point(field_release:UnaryDemoRequest.name)
+  // @@protoc_insertion_point(field_release:grpcDemo.UnaryDemoRequest.name)
   return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
 inline void UnaryDemoRequest::set_allocated_name(std::string* name) {
@@ -409,7 +412,7 @@ inline void UnaryDemoRequest::set_allocated_name(std::string* name) {
   }
   name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
       GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:UnaryDemoRequest.name)
+  // @@protoc_insertion_point(field_set_allocated:grpcDemo.UnaryDemoRequest.name)
 }
 
 // -------------------------------------------------------------------
@@ -421,7 +424,7 @@ inline void UnaryDemoResponse::clear_message() {
   message_.ClearToEmpty();
 }
 inline const std::string& UnaryDemoResponse::message() const {
-  // @@protoc_insertion_point(field_get:UnaryDemoResponse.message)
+  // @@protoc_insertion_point(field_get:grpcDemo.UnaryDemoResponse.message)
   return _internal_message();
 }
 template <typename ArgT0, typename... ArgT>
@@ -429,11 +432,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void UnaryDemoResponse::set_message(ArgT0&& arg0, ArgT... args) {
  
  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:UnaryDemoResponse.message)
+  // @@protoc_insertion_point(field_set:grpcDemo.UnaryDemoResponse.message)
 }
 inline std::string* UnaryDemoResponse::mutable_message() {
   std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:UnaryDemoResponse.message)
+  // @@protoc_insertion_point(field_mutable:grpcDemo.UnaryDemoResponse.message)
   return _s;
 }
 inline const std::string& UnaryDemoResponse::_internal_message() const {
@@ -448,7 +451,7 @@ inline std::string* UnaryDemoResponse::_internal_mutable_message() {
   return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
 inline std::string* UnaryDemoResponse::release_message() {
-  // @@protoc_insertion_point(field_release:UnaryDemoResponse.message)
+  // @@protoc_insertion_point(field_release:grpcDemo.UnaryDemoResponse.message)
   return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
 inline void UnaryDemoResponse::set_allocated_message(std::string* message) {
@@ -459,7 +462,7 @@ inline void UnaryDemoResponse::set_allocated_message(std::string* message) {
   }
   message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
       GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:UnaryDemoResponse.message)
+  // @@protoc_insertion_point(field_set_allocated:grpcDemo.UnaryDemoResponse.message)
 }
 
 #ifdef __GNUC__
@@ -470,6 +473,7 @@ inline void UnaryDemoResponse::set_allocated_message(std::string* message) {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace grpcDemo
 
 // @@protoc_insertion_point(global_scope)
 

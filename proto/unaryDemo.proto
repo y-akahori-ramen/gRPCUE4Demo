@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 option go_package = "github.com/y-akahori-ramen/gRPCUE4Demo/proto";
+package grpcDemo;
 
 message UnaryDemoRequest {
     string name = 1;

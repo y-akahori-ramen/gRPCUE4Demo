@@ -31,7 +31,7 @@ func NewUnaryDemoServiceClient(cc grpc.ClientConnInterface) UnaryDemoServiceClie
 
 func (c *unaryDemoServiceClient) Request(ctx context.Context, in *UnaryDemoRequest, opts ...grpc.CallOption) (*UnaryDemoResponse, error) {
 	out := new(UnaryDemoResponse)
-	err := c.cc.Invoke(ctx, "/UnaryDemoService/Request", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/grpcDemo.UnaryDemoService/Request", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func _UnaryDemoService_Request_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/UnaryDemoService/Request",
+		FullMethod: "/grpcDemo.UnaryDemoService/Request",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UnaryDemoServiceServer).Request(ctx, req.(*UnaryDemoRequest))
@@ -88,7 +88,7 @@ func _UnaryDemoService_Request_Handler(srv interface{}, ctx context.Context, dec
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var UnaryDemoService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "UnaryDemoService",
+	ServiceName: "grpcDemo.UnaryDemoService",
 	HandlerType: (*UnaryDemoServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

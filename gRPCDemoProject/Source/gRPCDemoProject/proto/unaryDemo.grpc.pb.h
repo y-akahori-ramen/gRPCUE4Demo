@@ -28,49 +28,51 @@ THIRD_PARTY_INCLUDES_START
 #include <grpcpp/impl/codegen/stub_options.h>
 #include <grpcpp/impl/codegen/sync_stream.h>
 
+namespace grpcDemo {
+
 class UnaryDemoService final {
  public:
   static constexpr char const* service_full_name() {
-    return "UnaryDemoService";
+    return "grpcDemo.UnaryDemoService";
   }
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status Request(::grpc::ClientContext* context, const ::UnaryDemoRequest& request, ::UnaryDemoResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::UnaryDemoResponse>> AsyncRequest(::grpc::ClientContext* context, const ::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::UnaryDemoResponse>>(AsyncRequestRaw(context, request, cq));
+    virtual ::grpc::Status Request(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest& request, ::grpcDemo::UnaryDemoResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::grpcDemo::UnaryDemoResponse>> AsyncRequest(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::grpcDemo::UnaryDemoResponse>>(AsyncRequestRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::UnaryDemoResponse>> PrepareAsyncRequest(::grpc::ClientContext* context, const ::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::UnaryDemoResponse>>(PrepareAsyncRequestRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::grpcDemo::UnaryDemoResponse>> PrepareAsyncRequest(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::grpcDemo::UnaryDemoResponse>>(PrepareAsyncRequestRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void Request(::grpc::ClientContext* context, const ::UnaryDemoRequest* request, ::UnaryDemoResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Request(::grpc::ClientContext* context, const ::UnaryDemoRequest* request, ::UnaryDemoResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Request(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest* request, ::grpcDemo::UnaryDemoResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Request(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest* request, ::grpcDemo::UnaryDemoResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::UnaryDemoResponse>* AsyncRequestRaw(::grpc::ClientContext* context, const ::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::UnaryDemoResponse>* PrepareAsyncRequestRaw(::grpc::ClientContext* context, const ::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::grpcDemo::UnaryDemoResponse>* AsyncRequestRaw(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::grpcDemo::UnaryDemoResponse>* PrepareAsyncRequestRaw(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status Request(::grpc::ClientContext* context, const ::UnaryDemoRequest& request, ::UnaryDemoResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::UnaryDemoResponse>> AsyncRequest(::grpc::ClientContext* context, const ::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::UnaryDemoResponse>>(AsyncRequestRaw(context, request, cq));
+    ::grpc::Status Request(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest& request, ::grpcDemo::UnaryDemoResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::grpcDemo::UnaryDemoResponse>> AsyncRequest(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::grpcDemo::UnaryDemoResponse>>(AsyncRequestRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::UnaryDemoResponse>> PrepareAsyncRequest(::grpc::ClientContext* context, const ::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::UnaryDemoResponse>>(PrepareAsyncRequestRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::grpcDemo::UnaryDemoResponse>> PrepareAsyncRequest(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::grpcDemo::UnaryDemoResponse>>(PrepareAsyncRequestRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void Request(::grpc::ClientContext* context, const ::UnaryDemoRequest* request, ::UnaryDemoResponse* response, std::function<void(::grpc::Status)>) override;
-      void Request(::grpc::ClientContext* context, const ::UnaryDemoRequest* request, ::UnaryDemoResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Request(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest* request, ::grpcDemo::UnaryDemoResponse* response, std::function<void(::grpc::Status)>) override;
+      void Request(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest* request, ::grpcDemo::UnaryDemoResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -82,8 +84,8 @@ class UnaryDemoService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::UnaryDemoResponse>* AsyncRequestRaw(::grpc::ClientContext* context, const ::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::UnaryDemoResponse>* PrepareAsyncRequestRaw(::grpc::ClientContext* context, const ::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::grpcDemo::UnaryDemoResponse>* AsyncRequestRaw(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::grpcDemo::UnaryDemoResponse>* PrepareAsyncRequestRaw(::grpc::ClientContext* context, const ::grpcDemo::UnaryDemoRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Request_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -92,7 +94,7 @@ class UnaryDemoService final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status Request(::grpc::ServerContext* context, const ::UnaryDemoRequest* request, ::UnaryDemoResponse* response);
+    virtual ::grpc::Status Request(::grpc::ServerContext* context, const ::grpcDemo::UnaryDemoRequest* request, ::grpcDemo::UnaryDemoResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_Request : public BaseClass {
@@ -106,11 +108,11 @@ class UnaryDemoService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::UnaryDemoRequest* /*request*/, ::UnaryDemoResponse* /*response*/) override {
+    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::grpcDemo::UnaryDemoRequest* /*request*/, ::grpcDemo::UnaryDemoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestRequest(::grpc::ServerContext* context, ::UnaryDemoRequest* request, ::grpc::ServerAsyncResponseWriter< ::UnaryDemoResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRequest(::grpc::ServerContext* context, ::grpcDemo::UnaryDemoRequest* request, ::grpc::ServerAsyncResponseWriter< ::grpcDemo::UnaryDemoResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -122,25 +124,25 @@ class UnaryDemoService final {
    public:
     WithCallbackMethod_Request() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::UnaryDemoRequest, ::UnaryDemoResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::grpcDemo::UnaryDemoRequest, ::grpcDemo::UnaryDemoResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::UnaryDemoRequest* request, ::UnaryDemoResponse* response) { return this->Request(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::grpcDemo::UnaryDemoRequest* request, ::grpcDemo::UnaryDemoResponse* response) { return this->Request(context, request, response); }));}
     void SetMessageAllocatorFor_Request(
-        ::grpc::MessageAllocator< ::UnaryDemoRequest, ::UnaryDemoResponse>* allocator) {
+        ::grpc::MessageAllocator< ::grpcDemo::UnaryDemoRequest, ::grpcDemo::UnaryDemoResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::UnaryDemoRequest, ::UnaryDemoResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::grpcDemo::UnaryDemoRequest, ::grpcDemo::UnaryDemoResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_Request() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::UnaryDemoRequest* /*request*/, ::UnaryDemoResponse* /*response*/) override {
+    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::grpcDemo::UnaryDemoRequest* /*request*/, ::grpcDemo::UnaryDemoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* Request(
-      ::grpc::CallbackServerContext* /*context*/, const ::UnaryDemoRequest* /*request*/, ::UnaryDemoResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpcDemo::UnaryDemoRequest* /*request*/, ::grpcDemo::UnaryDemoResponse* /*response*/)  { return nullptr; }
   };
   typedef WithCallbackMethod_Request<Service > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
@@ -156,7 +158,7 @@ class UnaryDemoService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::UnaryDemoRequest* /*request*/, ::UnaryDemoResponse* /*response*/) override {
+    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::grpcDemo::UnaryDemoRequest* /*request*/, ::grpcDemo::UnaryDemoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -173,7 +175,7 @@ class UnaryDemoService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::UnaryDemoRequest* /*request*/, ::UnaryDemoResponse* /*response*/) override {
+    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::grpcDemo::UnaryDemoRequest* /*request*/, ::grpcDemo::UnaryDemoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -196,7 +198,7 @@ class UnaryDemoService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::UnaryDemoRequest* /*request*/, ::UnaryDemoResponse* /*response*/) override {
+    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::grpcDemo::UnaryDemoRequest* /*request*/, ::grpcDemo::UnaryDemoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -211,10 +213,10 @@ class UnaryDemoService final {
     WithStreamedUnaryMethod_Request() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::UnaryDemoRequest, ::UnaryDemoResponse>(
+          ::grpcDemo::UnaryDemoRequest, ::grpcDemo::UnaryDemoResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::UnaryDemoRequest, ::UnaryDemoResponse>* streamer) {
+                     ::grpcDemo::UnaryDemoRequest, ::grpcDemo::UnaryDemoResponse>* streamer) {
                        return this->StreamedRequest(context,
                          streamer);
                   }));
@@ -223,17 +225,19 @@ class UnaryDemoService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::UnaryDemoRequest* /*request*/, ::UnaryDemoResponse* /*response*/) override {
+    ::grpc::Status Request(::grpc::ServerContext* /*context*/, const ::grpcDemo::UnaryDemoRequest* /*request*/, ::grpcDemo::UnaryDemoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedRequest(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::UnaryDemoRequest,::UnaryDemoResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedRequest(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::grpcDemo::UnaryDemoRequest,::grpcDemo::UnaryDemoResponse>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_Request<Service > StreamedUnaryService;
   typedef Service SplitStreamedService;
   typedef WithStreamedUnaryMethod_Request<Service > StreamedService;
 };
+
+}  // namespace grpcDemo
 
 
 #endif  // GRPC_unaryDemo_2eproto__INCLUDED
