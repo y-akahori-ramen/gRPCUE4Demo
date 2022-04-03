@@ -15,7 +15,7 @@ type UnaryDemoServiceServer struct {
 }
 
 func NewUnaryDemoService() *UnaryDemoServiceServer {
-	return &UnaryDemoServiceServer{logger: log.New(os.Stdout, "UnaryDemo", log.Default().Flags())}
+	return &UnaryDemoServiceServer{logger: log.New(os.Stdout, "[UnaryDemo]", log.Default().Flags())}
 }
 
 func (server *UnaryDemoServiceServer) Request(_ context.Context, req *proto.UnaryDemoRequest) (*proto.UnaryDemoResponse, error) {
