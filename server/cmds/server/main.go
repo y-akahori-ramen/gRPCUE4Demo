@@ -21,7 +21,7 @@ func main() {
 
 	grpcServer := grpc.NewServer()
 
-	unaryDemoService := service.NewUnaryDemoService()
+	unaryDemoService := service.NewUnaryDemoServiceServer()
 	proto.RegisterUnaryDemoServiceServer(grpcServer, unaryDemoService)
 
 	log.Printf("Start server. port:%d", *port)

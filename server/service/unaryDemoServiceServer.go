@@ -14,7 +14,7 @@ type UnaryDemoServiceServer struct {
 	proto.UnimplementedUnaryDemoServiceServer
 }
 
-func NewUnaryDemoService() *UnaryDemoServiceServer {
+func NewUnaryDemoServiceServer() *UnaryDemoServiceServer {
 	return &UnaryDemoServiceServer{logger: log.New(os.Stdout, "[UnaryDemo]", log.Default().Flags())}
 }
 
