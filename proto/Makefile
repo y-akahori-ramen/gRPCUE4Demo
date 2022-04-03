@@ -1,4 +1,4 @@
-modulename = github.com/y-akahori-ramen/gRPCUE4Demo/server
+modulename = github.com/y-akahori-ramen/gRPCUE4Demo/proto
 go_out = ../server/proto
 cpp_out = ../gRPCDemoProject/Source/gRPCDemoProject/proto
 

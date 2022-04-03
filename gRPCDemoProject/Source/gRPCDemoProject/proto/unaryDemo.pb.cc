@@ -76,12 +76,12 @@ const char descriptor_table_protodef_unaryDemo_2eproto[] PROTOBUF_SECTION_VARIAB
   "\004name\030\001 \001(\t\"$\n\021UnaryDemoResponse\022\017\n\007mess"
   "age\030\001 \001(\t2F\n\020UnaryDemoService\0222\n\007Request"
   "\022\021.UnaryDemoRequest\032\022.UnaryDemoResponse\""
-  "\000B/Z-github.com/y-akahori-ramen/gRPCUE4D"
-  "emo/serverb\006proto3"
+  "\000B.Z,github.com/y-akahori-ramen/gRPCUE4D"
+  "emo/protob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_unaryDemo_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_unaryDemo_2eproto = {
-  false, false, 218, descriptor_table_protodef_unaryDemo_2eproto, "unaryDemo.proto", 
+  false, false, 217, descriptor_table_protodef_unaryDemo_2eproto, "unaryDemo.proto", 
   &descriptor_table_unaryDemo_2eproto_once, nullptr, 0, 2,
   schemas, file_default_instances, TableStruct_unaryDemo_2eproto::offsets,
   file_level_metadata_unaryDemo_2eproto, file_level_enum_descriptors_unaryDemo_2eproto, file_level_service_descriptors_unaryDemo_2eproto,
