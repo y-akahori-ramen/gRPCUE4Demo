@@ -120,18 +120,18 @@ const char descriptor_table_protodef_serverStreamingDemo_2eproto[] PROTOBUF_SECT
   "eResponse\022\r\n\005chunk\030\001 \001(\014\"1\n GetServerStr"
   "eamingMessageRequest\022\r\n\005count\030\001 \001(\005\"4\n!G"
   "etServerStreamingMessageResponse\022\017\n\007mess"
-  "age\030\001 \001(\t2\362\001\n\032ServerStreamingDemoService"
+  "age\030\001 \001(\t2\370\001\n\032ServerStreamingDemoService"
   "\022i\n\nGetTexture\022*.grpcDemo.GetServerStrea"
   "mingTextureRequest\032+.grpcDemo.GetServerS"
-  "treamingTextureResponse\"\0000\001\022i\n\nGetMessag"
-  "e\022*.grpcDemo.GetServerStreamingMessageRe"
-  "quest\032+.grpcDemo.GetServerStreamingMessa"
-  "geResponse\"\0000\001B.Z,github.com/y-akahori-r"
-  "amen/gRPCUE4Demo/protob\006proto3"
+  "treamingTextureResponse\"\0000\001\022o\n\020GetSimple"
+  "Message\022*.grpcDemo.GetServerStreamingMes"
+  "sageRequest\032+.grpcDemo.GetServerStreamin"
+  "gMessageResponse\"\0000\001B.Z,github.com/y-aka"
+  "hori-ramen/gRPCUE4Demo/protob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_serverStreamingDemo_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_serverStreamingDemo_2eproto = {
-  false, false, 550, descriptor_table_protodef_serverStreamingDemo_2eproto, "serverStreamingDemo.proto", 
+  false, false, 556, descriptor_table_protodef_serverStreamingDemo_2eproto, "serverStreamingDemo.proto", 
   &descriptor_table_serverStreamingDemo_2eproto_once, nullptr, 0, 4,
   schemas, file_default_instances, TableStruct_serverStreamingDemo_2eproto::offsets,
   file_level_metadata_serverStreamingDemo_2eproto, file_level_enum_descriptors_serverStreamingDemo_2eproto, file_level_service_descriptors_serverStreamingDemo_2eproto,

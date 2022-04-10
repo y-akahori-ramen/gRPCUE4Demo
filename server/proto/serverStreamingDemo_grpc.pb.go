@@ -19,7 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ServerStreamingDemoServiceClient interface {
 	GetTexture(ctx context.Context, in *GetServerStreamingTextureRequest, opts ...grpc.CallOption) (ServerStreamingDemoService_GetTextureClient, error)
-	GetMessage(ctx context.Context, in *GetServerStreamingMessageRequest, opts ...grpc.CallOption) (ServerStreamingDemoService_GetMessageClient, error)
+	GetSimpleMessage(ctx context.Context, in *GetServerStreamingMessageRequest, opts ...grpc.CallOption) (ServerStreamingDemoService_GetSimpleMessageClient, error)
 }
 
 type serverStreamingDemoServiceClient struct {
@@ -62,12 +62,12 @@ func (x *serverStreamingDemoServiceGetTextureClient) Recv() (*GetServerStreaming
 	return m, nil
 }
 
-func (c *serverStreamingDemoServiceClient) GetMessage(ctx context.Context, in *GetServerStreamingMessageRequest, opts ...grpc.CallOption) (ServerStreamingDemoService_GetMessageClient, error) {
-	stream, err := c.cc.NewStream(ctx, &ServerStreamingDemoService_ServiceDesc.Streams[1], "/grpcDemo.ServerStreamingDemoService/GetMessage", opts...)
+func (c *serverStreamingDemoServiceClient) GetSimpleMessage(ctx context.Context, in *GetServerStreamingMessageRequest, opts ...grpc.CallOption) (ServerStreamingDemoService_GetSimpleMessageClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ServerStreamingDemoService_ServiceDesc.Streams[1], "/grpcDemo.ServerStreamingDemoService/GetSimpleMessage", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &serverStreamingDemoServiceGetMessageClient{stream}
+	x := &serverStreamingDemoServiceGetSimpleMessageClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -77,16 +77,16 @@ func (c *serverStreamingDemoServiceClient) GetMessage(ctx context.Context, in *G
 	return x, nil
 }
 
-type ServerStreamingDemoService_GetMessageClient interface {
+type ServerStreamingDemoService_GetSimpleMessageClient interface {
 	Recv() (*GetServerStreamingMessageResponse, error)
 	grpc.ClientStream
 }
 
-type serverStreamingDemoServiceGetMessageClient struct {
+type serverStreamingDemoServiceGetSimpleMessageClient struct {
 	grpc.ClientStream
 }
 
-func (x *serverStreamingDemoServiceGetMessageClient) Recv() (*GetServerStreamingMessageResponse, error) {
+func (x *serverStreamingDemoServiceGetSimpleMessageClient) Recv() (*GetServerStreamingMessageResponse, error) {
 	m := new(GetServerStreamingMessageResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -99,7 +99,7 @@ func (x *serverStreamingDemoServiceGetMessageClient) Recv() (*GetServerStreaming
 // for forward compatibility
 type ServerStreamingDemoServiceServer interface {
 	GetTexture(*GetServerStreamingTextureRequest, ServerStreamingDemoService_GetTextureServer) error
-	GetMessage(*GetServerStreamingMessageRequest, ServerStreamingDemoService_GetMessageServer) error
+	GetSimpleMessage(*GetServerStreamingMessageRequest, ServerStreamingDemoService_GetSimpleMessageServer) error
 	mustEmbedUnimplementedServerStreamingDemoServiceServer()
 }
 
@@ -110,8 +110,8 @@ type UnimplementedServerStreamingDemoServiceServer struct {
 func (UnimplementedServerStreamingDemoServiceServer) GetTexture(*GetServerStreamingTextureRequest, ServerStreamingDemoService_GetTextureServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetTexture not implemented")
 }
-func (UnimplementedServerStreamingDemoServiceServer) GetMessage(*GetServerStreamingMessageRequest, ServerStreamingDemoService_GetMessageServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetMessage not implemented")
+func (UnimplementedServerStreamingDemoServiceServer) GetSimpleMessage(*GetServerStreamingMessageRequest, ServerStreamingDemoService_GetSimpleMessageServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetSimpleMessage not implemented")
 }
 func (UnimplementedServerStreamingDemoServiceServer) mustEmbedUnimplementedServerStreamingDemoServiceServer() {
 }
@@ -148,24 +148,24 @@ func (x *serverStreamingDemoServiceGetTextureServer) Send(m *GetServerStreamingT
 	return x.ServerStream.SendMsg(m)
 }
 
-func _ServerStreamingDemoService_GetMessage_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _ServerStreamingDemoService_GetSimpleMessage_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(GetServerStreamingMessageRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(ServerStreamingDemoServiceServer).GetMessage(m, &serverStreamingDemoServiceGetMessageServer{stream})
+	return srv.(ServerStreamingDemoServiceServer).GetSimpleMessage(m, &serverStreamingDemoServiceGetSimpleMessageServer{stream})
 }
 
-type ServerStreamingDemoService_GetMessageServer interface {
+type ServerStreamingDemoService_GetSimpleMessageServer interface {
 	Send(*GetServerStreamingMessageResponse) error
 	grpc.ServerStream
 }
 
-type serverStreamingDemoServiceGetMessageServer struct {
+type serverStreamingDemoServiceGetSimpleMessageServer struct {
 	grpc.ServerStream
 }
 
-func (x *serverStreamingDemoServiceGetMessageServer) Send(m *GetServerStreamingMessageResponse) error {
+func (x *serverStreamingDemoServiceGetSimpleMessageServer) Send(m *GetServerStreamingMessageResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -183,8 +183,8 @@ var ServerStreamingDemoService_ServiceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "GetMessage",
-			Handler:       _ServerStreamingDemoService_GetMessage_Handler,
+			StreamName:    "GetSimpleMessage",
+			Handler:       _ServerStreamingDemoService_GetSimpleMessage_Handler,
 			ServerStreams: true,
 		},
 	},

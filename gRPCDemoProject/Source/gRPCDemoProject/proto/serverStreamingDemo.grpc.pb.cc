@@ -26,7 +26,7 @@ namespace grpcDemo {
 
 static const char* ServerStreamingDemoService_method_names[] = {
   "/grpcDemo.ServerStreamingDemoService/GetTexture",
-  "/grpcDemo.ServerStreamingDemoService/GetMessage",
+  "/grpcDemo.ServerStreamingDemoService/GetSimpleMessage",
 };
 
 std::unique_ptr< ServerStreamingDemoService::Stub> ServerStreamingDemoService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,7 +37,7 @@ std::unique_ptr< ServerStreamingDemoService::Stub> ServerStreamingDemoService::N
 
 ServerStreamingDemoService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_GetTexture_(ServerStreamingDemoService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_GetMessage_(ServerStreamingDemoService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_GetSimpleMessage_(ServerStreamingDemoService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::ClientReader< ::grpcDemo::GetServerStreamingTextureResponse>* ServerStreamingDemoService::Stub::GetTextureRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest& request) {
@@ -56,20 +56,20 @@ void ServerStreamingDemoService::Stub::async::GetTexture(::grpc::ClientContext* 
   return ::grpc::internal::ClientAsyncReaderFactory< ::grpcDemo::GetServerStreamingTextureResponse>::Create(channel_.get(), cq, rpcmethod_GetTexture_, context, request, false, nullptr);
 }
 
-::grpc::ClientReader< ::grpcDemo::GetServerStreamingMessageResponse>* ServerStreamingDemoService::Stub::GetMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request) {
-  return ::grpc::internal::ClientReaderFactory< ::grpcDemo::GetServerStreamingMessageResponse>::Create(channel_.get(), rpcmethod_GetMessage_, context, request);
+::grpc::ClientReader< ::grpcDemo::GetServerStreamingMessageResponse>* ServerStreamingDemoService::Stub::GetSimpleMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::grpcDemo::GetServerStreamingMessageResponse>::Create(channel_.get(), rpcmethod_GetSimpleMessage_, context, request);
 }
 
-void ServerStreamingDemoService::Stub::async::GetMessage(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest* request, ::grpc::ClientReadReactor< ::grpcDemo::GetServerStreamingMessageResponse>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::grpcDemo::GetServerStreamingMessageResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_GetMessage_, context, request, reactor);
+void ServerStreamingDemoService::Stub::async::GetSimpleMessage(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest* request, ::grpc::ClientReadReactor< ::grpcDemo::GetServerStreamingMessageResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::grpcDemo::GetServerStreamingMessageResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_GetSimpleMessage_, context, request, reactor);
 }
 
-::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingMessageResponse>* ServerStreamingDemoService::Stub::AsyncGetMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::grpcDemo::GetServerStreamingMessageResponse>::Create(channel_.get(), cq, rpcmethod_GetMessage_, context, request, true, tag);
+::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingMessageResponse>* ServerStreamingDemoService::Stub::AsyncGetSimpleMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::grpcDemo::GetServerStreamingMessageResponse>::Create(channel_.get(), cq, rpcmethod_GetSimpleMessage_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingMessageResponse>* ServerStreamingDemoService::Stub::PrepareAsyncGetMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::grpcDemo::GetServerStreamingMessageResponse>::Create(channel_.get(), cq, rpcmethod_GetMessage_, context, request, false, nullptr);
+::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingMessageResponse>* ServerStreamingDemoService::Stub::PrepareAsyncGetSimpleMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::grpcDemo::GetServerStreamingMessageResponse>::Create(channel_.get(), cq, rpcmethod_GetSimpleMessage_, context, request, false, nullptr);
 }
 
 ServerStreamingDemoService::Service::Service() {
@@ -91,7 +91,7 @@ ServerStreamingDemoService::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::grpcDemo::GetServerStreamingMessageRequest* req,
              ::grpc::ServerWriter<::grpcDemo::GetServerStreamingMessageResponse>* writer) {
-               return service->GetMessage(ctx, req, writer);
+               return service->GetSimpleMessage(ctx, req, writer);
              }, this)));
 }
 
@@ -105,7 +105,7 @@ ServerStreamingDemoService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status ServerStreamingDemoService::Service::GetMessage(::grpc::ServerContext* context, const ::grpcDemo::GetServerStreamingMessageRequest* request, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingMessageResponse>* writer) {
+::grpc::Status ServerStreamingDemoService::Service::GetSimpleMessage(::grpc::ServerContext* context, const ::grpcDemo::GetServerStreamingMessageRequest* request, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingMessageResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;
