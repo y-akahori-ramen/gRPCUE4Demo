@@ -1,4 +1,0 @@
-[submodule "gRPCDemoProject/Plugins/gRPCForUE4"]
-	path = gRPCDemoProject/Plugins/gRPCForUE4
-	url = https://github.com/y-akahori-ramen/gRPCForUE4.git
-	ignore = dirty
