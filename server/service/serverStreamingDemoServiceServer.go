@@ -33,7 +33,7 @@ func (server *ServerStreamingDemoServiceServer) GetTexture(
 	}
 	defer file.Close()
 
-	const bufferSize int = 1024 * 32
+	const bufferSize int = 1024
 	buffer := make([]byte, bufferSize)
 	totalSize := 0
 
