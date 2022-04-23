@@ -43,7 +43,6 @@ void FGRPCDemoCommands::ServerStreamingDemo(FString imageName)
 				TArray<uint8> rgbaData;
 				imageWrappger->GetRaw(ERGBFormat::RGBA, 8, rgbaData);
 
-				UE_LOG(LogTemp, Log, TEXT("%d,%d,%d,%d"), rgbaData[0], rgbaData[1], rgbaData[2], rgbaData[3]);
 				if (UDemoSubsystem* demoSystem = GetDemoSubSystem(); demoSystem != nullptr)
 				{
 					demoSystem->ChangeTexture(imageWrappger->GetWidth(), imageWrappger->GetHeight(), PF_R8G8B8A8, rgbaData.GetData(), rgbaData.Num());

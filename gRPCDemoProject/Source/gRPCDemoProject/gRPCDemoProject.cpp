@@ -26,7 +26,7 @@ void FgRPCDemoProjectModule::StartupModule()
 
 		IConsoleManager::Get().RegisterConsoleCommand(
 			TEXT("ServerStreamingDemo"),
-			TEXT("ServerStreamingDemo ImageName(e.g Texture1.bmp)"),
+			TEXT("ServerStreamingDemo ImageName(e.g Texture1.png)"),
 			FConsoleCommandWithArgsDelegate::CreateLambda([](const TArray<FString>& Args)
 			{
 				if(Args.Num() == 1)
