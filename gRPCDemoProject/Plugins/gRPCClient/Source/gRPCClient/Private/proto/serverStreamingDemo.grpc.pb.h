@@ -47,20 +47,10 @@ class ServerStreamingDemoService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::grpcDemo::GetServerStreamingTextureResponse>> PrepareAsyncGetTexture(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::grpcDemo::GetServerStreamingTextureResponse>>(PrepareAsyncGetTextureRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReaderInterface< ::grpcDemo::GetServerStreamingMessageResponse>> GetSimpleMessage(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReaderInterface< ::grpcDemo::GetServerStreamingMessageResponse>>(GetSimpleMessageRaw(context, request));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::grpcDemo::GetServerStreamingMessageResponse>> AsyncGetSimpleMessage(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::grpcDemo::GetServerStreamingMessageResponse>>(AsyncGetSimpleMessageRaw(context, request, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::grpcDemo::GetServerStreamingMessageResponse>> PrepareAsyncGetSimpleMessage(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::grpcDemo::GetServerStreamingMessageResponse>>(PrepareAsyncGetSimpleMessageRaw(context, request, cq));
-    }
     class async_interface {
      public:
       virtual ~async_interface() {}
       virtual void GetTexture(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest* request, ::grpc::ClientReadReactor< ::grpcDemo::GetServerStreamingTextureResponse>* reactor) = 0;
-      virtual void GetSimpleMessage(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest* request, ::grpc::ClientReadReactor< ::grpcDemo::GetServerStreamingMessageResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -69,9 +59,6 @@ class ServerStreamingDemoService final {
     virtual ::grpc::ClientReaderInterface< ::grpcDemo::GetServerStreamingTextureResponse>* GetTextureRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::grpcDemo::GetServerStreamingTextureResponse>* AsyncGetTextureRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::grpcDemo::GetServerStreamingTextureResponse>* PrepareAsyncGetTextureRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderInterface< ::grpcDemo::GetServerStreamingMessageResponse>* GetSimpleMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::grpcDemo::GetServerStreamingMessageResponse>* AsyncGetSimpleMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::grpcDemo::GetServerStreamingMessageResponse>* PrepareAsyncGetSimpleMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -85,20 +72,10 @@ class ServerStreamingDemoService final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingTextureResponse>> PrepareAsyncGetTexture(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingTextureResponse>>(PrepareAsyncGetTextureRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReader< ::grpcDemo::GetServerStreamingMessageResponse>> GetSimpleMessage(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReader< ::grpcDemo::GetServerStreamingMessageResponse>>(GetSimpleMessageRaw(context, request));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingMessageResponse>> AsyncGetSimpleMessage(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingMessageResponse>>(AsyncGetSimpleMessageRaw(context, request, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingMessageResponse>> PrepareAsyncGetSimpleMessage(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingMessageResponse>>(PrepareAsyncGetSimpleMessageRaw(context, request, cq));
-    }
     class async final :
       public StubInterface::async_interface {
      public:
       void GetTexture(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest* request, ::grpc::ClientReadReactor< ::grpcDemo::GetServerStreamingTextureResponse>* reactor) override;
-      void GetSimpleMessage(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest* request, ::grpc::ClientReadReactor< ::grpcDemo::GetServerStreamingMessageResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -113,11 +90,7 @@ class ServerStreamingDemoService final {
     ::grpc::ClientReader< ::grpcDemo::GetServerStreamingTextureResponse>* GetTextureRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest& request) override;
     ::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingTextureResponse>* AsyncGetTextureRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingTextureResponse>* PrepareAsyncGetTextureRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingTextureRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReader< ::grpcDemo::GetServerStreamingMessageResponse>* GetSimpleMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request) override;
-    ::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingMessageResponse>* AsyncGetSimpleMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReader< ::grpcDemo::GetServerStreamingMessageResponse>* PrepareAsyncGetSimpleMessageRaw(::grpc::ClientContext* context, const ::grpcDemo::GetServerStreamingMessageRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_GetTexture_;
-    const ::grpc::internal::RpcMethod rpcmethod_GetSimpleMessage_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -126,7 +99,6 @@ class ServerStreamingDemoService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status GetTexture(::grpc::ServerContext* context, const ::grpcDemo::GetServerStreamingTextureRequest* request, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingTextureResponse>* writer);
-    virtual ::grpc::Status GetSimpleMessage(::grpc::ServerContext* context, const ::grpcDemo::GetServerStreamingMessageRequest* request, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingMessageResponse>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_GetTexture : public BaseClass {
@@ -148,27 +120,7 @@ class ServerStreamingDemoService final {
       ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
-  template <class BaseClass>
-  class WithAsyncMethod_GetSimpleMessage : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_GetSimpleMessage() {
-      ::grpc::Service::MarkMethodAsync(1);
-    }
-    ~WithAsyncMethod_GetSimpleMessage() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetSimpleMessage(::grpc::ServerContext* /*context*/, const ::grpcDemo::GetServerStreamingMessageRequest* /*request*/, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingMessageResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetSimpleMessage(::grpc::ServerContext* context, ::grpcDemo::GetServerStreamingMessageRequest* request, ::grpc::ServerAsyncWriter< ::grpcDemo::GetServerStreamingMessageResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
-    }
-  };
-  typedef WithAsyncMethod_GetTexture<WithAsyncMethod_GetSimpleMessage<Service > > AsyncService;
+  typedef WithAsyncMethod_GetTexture<Service > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_GetTexture : public BaseClass {
    private:
@@ -191,29 +143,7 @@ class ServerStreamingDemoService final {
     virtual ::grpc::ServerWriteReactor< ::grpcDemo::GetServerStreamingTextureResponse>* GetTexture(
       ::grpc::CallbackServerContext* /*context*/, const ::grpcDemo::GetServerStreamingTextureRequest* /*request*/)  { return nullptr; }
   };
-  template <class BaseClass>
-  class WithCallbackMethod_GetSimpleMessage : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_GetSimpleMessage() {
-      ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackServerStreamingHandler< ::grpcDemo::GetServerStreamingMessageRequest, ::grpcDemo::GetServerStreamingMessageResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpcDemo::GetServerStreamingMessageRequest* request) { return this->GetSimpleMessage(context, request); }));
-    }
-    ~WithCallbackMethod_GetSimpleMessage() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetSimpleMessage(::grpc::ServerContext* /*context*/, const ::grpcDemo::GetServerStreamingMessageRequest* /*request*/, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingMessageResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerWriteReactor< ::grpcDemo::GetServerStreamingMessageResponse>* GetSimpleMessage(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpcDemo::GetServerStreamingMessageRequest* /*request*/)  { return nullptr; }
-  };
-  typedef WithCallbackMethod_GetTexture<WithCallbackMethod_GetSimpleMessage<Service > > CallbackService;
+  typedef WithCallbackMethod_GetTexture<Service > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_GetTexture : public BaseClass {
@@ -228,23 +158,6 @@ class ServerStreamingDemoService final {
     }
     // disable synchronous version of this method
     ::grpc::Status GetTexture(::grpc::ServerContext* /*context*/, const ::grpcDemo::GetServerStreamingTextureRequest* /*request*/, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingTextureResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_GetSimpleMessage : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_GetSimpleMessage() {
-      ::grpc::Service::MarkMethodGeneric(1);
-    }
-    ~WithGenericMethod_GetSimpleMessage() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetSimpleMessage(::grpc::ServerContext* /*context*/, const ::grpcDemo::GetServerStreamingMessageRequest* /*request*/, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingMessageResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -270,26 +183,6 @@ class ServerStreamingDemoService final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_GetSimpleMessage : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_GetSimpleMessage() {
-      ::grpc::Service::MarkMethodRaw(1);
-    }
-    ~WithRawMethod_GetSimpleMessage() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetSimpleMessage(::grpc::ServerContext* /*context*/, const ::grpcDemo::GetServerStreamingMessageRequest* /*request*/, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingMessageResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetSimpleMessage(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
   class WithRawCallbackMethod_GetTexture : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -309,28 +202,6 @@ class ServerStreamingDemoService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* GetTexture(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_GetSimpleMessage : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_GetSimpleMessage() {
-      ::grpc::Service::MarkMethodRawCallback(1,
-          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->GetSimpleMessage(context, request); }));
-    }
-    ~WithRawCallbackMethod_GetSimpleMessage() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetSimpleMessage(::grpc::ServerContext* /*context*/, const ::grpcDemo::GetServerStreamingMessageRequest* /*request*/, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingMessageResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* GetSimpleMessage(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   typedef Service StreamedUnaryService;
@@ -361,35 +232,8 @@ class ServerStreamingDemoService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedGetTexture(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::grpcDemo::GetServerStreamingTextureRequest,::grpcDemo::GetServerStreamingTextureResponse>* server_split_streamer) = 0;
   };
-  template <class BaseClass>
-  class WithSplitStreamingMethod_GetSimpleMessage : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithSplitStreamingMethod_GetSimpleMessage() {
-      ::grpc::Service::MarkMethodStreamed(1,
-        new ::grpc::internal::SplitServerStreamingHandler<
-          ::grpcDemo::GetServerStreamingMessageRequest, ::grpcDemo::GetServerStreamingMessageResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerSplitStreamer<
-                     ::grpcDemo::GetServerStreamingMessageRequest, ::grpcDemo::GetServerStreamingMessageResponse>* streamer) {
-                       return this->StreamedGetSimpleMessage(context,
-                         streamer);
-                  }));
-    }
-    ~WithSplitStreamingMethod_GetSimpleMessage() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status GetSimpleMessage(::grpc::ServerContext* /*context*/, const ::grpcDemo::GetServerStreamingMessageRequest* /*request*/, ::grpc::ServerWriter< ::grpcDemo::GetServerStreamingMessageResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with split streamed
-    virtual ::grpc::Status StreamedGetSimpleMessage(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::grpcDemo::GetServerStreamingMessageRequest,::grpcDemo::GetServerStreamingMessageResponse>* server_split_streamer) = 0;
-  };
-  typedef WithSplitStreamingMethod_GetTexture<WithSplitStreamingMethod_GetSimpleMessage<Service > > SplitStreamedService;
-  typedef WithSplitStreamingMethod_GetTexture<WithSplitStreamingMethod_GetSimpleMessage<Service > > StreamedService;
+  typedef WithSplitStreamingMethod_GetTexture<Service > SplitStreamedService;
+  typedef WithSplitStreamingMethod_GetTexture<Service > StreamedService;
 };
 
 }  // namespace grpcDemo

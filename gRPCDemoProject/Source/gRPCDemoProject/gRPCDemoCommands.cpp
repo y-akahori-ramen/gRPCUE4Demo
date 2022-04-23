@@ -1,34 +1,95 @@
 #include "gRPCDemoCommands.h"
 
-THIRD_PARTY_INCLUDES_START
-#pragma warning (disable : 4005)
-#include <grpcpp/grpcpp.h>
-THIRD_PARTY_INCLUDES_END
-#include "proto/unaryDemo.grpc.pb.h"
+#include "IImageWrapper.h"
+#include "IImageWrapperModule.h"
+#include "Kismet/GameplayStatics.h"
+#include "DemoSubsystem.h"
+#include <ClientFactory.h>
 
 void FGRPCDemoCommands::UnaryDemo()
 {
-	const std::shared_ptr<grpc::Channel> channel = grpc::CreateChannel("localhost:8000", grpc::InsecureChannelCredentials());
-	const std::unique_ptr<grpcDemo::UnaryDemoService::Stub> stub(grpcDemo::UnaryDemoService::NewStub(channel));
+	TSharedPtr<IServiceClient> client = FServiceClientFactory::CreateServiceClient(TEXT("gRPCClient"));
 
-	grpcDemo::UnaryDemoRequest request;
-	request.set_name("UnaryDemo");
+	FUnaryResponseDelegate unaryDelegate;
+	unaryDelegate.BindLambda(
+		[](FResponseResult result, FString message) {
+			UE_LOG(LogTemp, Log, TEXT("result:%d message:%s"), result.IsSuccess(), *message);
+			if(result.IsSuccess())
+			{
+				GEngine->AddOnScreenDebugMessage(0, 5, FColor::Yellow, *message);
+			}
+			else
+			{
+				GEngine->AddOnScreenDebugMessage(0, 5, FColor::Red, *FString::Printf(TEXT("Failed. %s"), *result.GetMessage()));
+			}
+		});
 
-	grpcDemo::UnaryDemoResponse response;
-	grpc::ClientContext context;
-	const grpc::Status status = stub->Request(&context, request, &response);
+	client->RequestUnary(unaryDelegate);
+}
 
+void FGRPCDemoCommands::ServerStreamingDemo(FString imageName)
+{
+	TSharedPtr<IServiceClient> client = FServiceClientFactory::CreateServiceClient(TEXT("gRPCClient"));
 
-	FString result;
-	if (status.ok())
+	FServerStreamingResponseDelegate responseDelegate;
+	responseDelegate.BindLambda(
+		[](FResponseResult result, TArray<uint8> bmpData)
+		{
+			if (result.IsSuccess())
+			{
+				TSharedPtr<IImageWrapper> imageWrappger = FModuleManager::LoadModuleChecked<IImageWrapperModule>(FName("ImageWrapper")).CreateImageWrapper(EImageFormat::PNG);
+				imageWrappger->SetCompressed(bmpData.GetData(), bmpData.Num());
+
+				TArray<uint8> rgbaData;
+				imageWrappger->GetRaw(ERGBFormat::RGBA, 8, rgbaData);
+
+				UE_LOG(LogTemp, Log, TEXT("%d,%d,%d,%d"), rgbaData[0], rgbaData[1], rgbaData[2], rgbaData[3]);
+				if (UDemoSubsystem* demoSystem = GetDemoSubSystem(); demoSystem != nullptr)
+				{
+					demoSystem->ChangeTexture(imageWrappger->GetWidth(), imageWrappger->GetHeight(), PF_R8G8B8A8, rgbaData.GetData(), rgbaData.Num());
+					GEngine->AddOnScreenDebugMessage(0, 5, FColor::Yellow, TEXT("ChangeTexture"));
+				}
+				else
+				{
+					GEngine->AddOnScreenDebugMessage(0, 5, FColor::Red, TEXT("Fail to get demo system."));
+				}
+			}
+			else
+			{
+				GEngine->AddOnScreenDebugMessage(0, 5, FColor::Red, *FString::Printf(TEXT("Failed. %s"), *result.GetMessage()));
+			}
+		});
+
+	client->RequestServerStreaming(responseDelegate, imageName);
+}
+
+UWorld* FGRPCDemoCommands::GetAnyGameWorld()
+{
+	UWorld* world = nullptr;
+	const TIndirectArray<FWorldContext>& WorldContexts = GEngine->GetWorldContexts();
+	for (const FWorldContext& WorldContext : WorldContexts)
 	{
-		result = response.message().c_str();
+		const bool bIsValid = WorldContext.World() != nullptr
+			&& (WorldContext.WorldType == EWorldType::PIE || WorldContext.WorldType == EWorldType::Game);
+
+		if (bIsValid)
+		{
+			world = WorldContext.World();
+			break;
+		}
+	}
+
+	return world;
+}
+
+UDemoSubsystem* FGRPCDemoCommands::GetDemoSubSystem()
+{
+	if(UWorld* world = GetAnyGameWorld(); world != nullptr)
+	{
+		return world->GetGameInstance()->GetSubsystem<UDemoSubsystem>();
 	}
 	else
 	{
-		result = TEXT("RPC failed");
+		return nullptr;
 	}
-
-
-	GEngine->AddOnScreenDebugMessage(0, 5, FColor::Yellow, result);
 }

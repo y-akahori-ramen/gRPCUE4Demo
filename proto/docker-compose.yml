@@ -5,6 +5,6 @@ services:
     volumes:
       - .:/usr/build/proto
       - ../server/proto:/usr/build/server/proto
-      - ../gRPCDemoProject/Source/gRPCDemoProject/proto:/usr/build/gRPCDemoProject/Source/gRPCDemoProject/proto
+      - ../gRPCDemoProject/Plugins/gRPCClient/source/gRPCClient/Private/proto:/usr/build/gRPCDemoProject/Plugins/gRPCClient/source/gRPCClient/Private/proto
     working_dir: /usr/build/proto
     entrypoint: "make generate"

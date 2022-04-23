@@ -1,6 +1,6 @@
 modulename = github.com/y-akahori-ramen/gRPCUE4Demo/proto
 go_out = ../server/proto
-cpp_out = ../gRPCDemoProject/Source/gRPCDemoProject/proto
+cpp_out = ../gRPCDemoProject/Plugins/gRPCClient/source/gRPCClient/Private/proto
 
 # protoファイルからC++とGoのコードを生成する。UnrealEngineはWindows環境での開発を想定しているためCRLFに改行コードを変換させる
 # また、C++の警告とエラー抑制のためC++のソースはTHIRD_PARTY_INCLUDES_START~THIRD_PARTY_INCLUDES_ENDで囲い、C4125,C4005を追加で無効にする

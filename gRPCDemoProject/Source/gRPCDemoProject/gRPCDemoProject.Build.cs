@@ -20,7 +20,8 @@ public class gRPCDemoProject : ModuleRules
 
 		// To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
 
-		PublicDependencyModuleNames.Add("gRPCForUE4");
+		PublicDependencyModuleNames.Add("ClientInterface");
+		PublicDependencyModuleNames.Add("ImageWrapper");
 
 		CppStandard = CppStandardVersion.Cpp17;
 	}

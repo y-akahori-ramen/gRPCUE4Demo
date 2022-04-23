@@ -44,32 +44,8 @@ struct GetServerStreamingTextureResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GetServerStreamingTextureResponseDefaultTypeInternal _GetServerStreamingTextureResponse_default_instance_;
-constexpr GetServerStreamingMessageRequest::GetServerStreamingMessageRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : count_(0){}
-struct GetServerStreamingMessageRequestDefaultTypeInternal {
-  constexpr GetServerStreamingMessageRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~GetServerStreamingMessageRequestDefaultTypeInternal() {}
-  union {
-    GetServerStreamingMessageRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GetServerStreamingMessageRequestDefaultTypeInternal _GetServerStreamingMessageRequest_default_instance_;
-constexpr GetServerStreamingMessageResponse::GetServerStreamingMessageResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
-struct GetServerStreamingMessageResponseDefaultTypeInternal {
-  constexpr GetServerStreamingMessageResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~GetServerStreamingMessageResponseDefaultTypeInternal() {}
-  union {
-    GetServerStreamingMessageResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GetServerStreamingMessageResponseDefaultTypeInternal _GetServerStreamingMessageResponse_default_instance_;
 }  // namespace grpcDemo
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_serverStreamingDemo_2eproto[4];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_serverStreamingDemo_2eproto[2];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_serverStreamingDemo_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_serverStreamingDemo_2eproto = nullptr;
 
@@ -86,53 +62,32 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_serverStreamingDemo_2eproto::o
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::grpcDemo::GetServerStreamingTextureResponse, chunk_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::grpcDemo::GetServerStreamingMessageRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::grpcDemo::GetServerStreamingMessageRequest, count_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::grpcDemo::GetServerStreamingMessageResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::grpcDemo::GetServerStreamingMessageResponse, message_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::grpcDemo::GetServerStreamingTextureRequest)},
   { 6, -1, sizeof(::grpcDemo::GetServerStreamingTextureResponse)},
-  { 12, -1, sizeof(::grpcDemo::GetServerStreamingMessageRequest)},
-  { 18, -1, sizeof(::grpcDemo::GetServerStreamingMessageResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::grpcDemo::_GetServerStreamingTextureRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::grpcDemo::_GetServerStreamingTextureResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::grpcDemo::_GetServerStreamingMessageRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::grpcDemo::_GetServerStreamingMessageResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_serverStreamingDemo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\031serverStreamingDemo.proto\022\010grpcDemo\"5\n"
   " GetServerStreamingTextureRequest\022\021\n\tima"
   "geName\030\001 \001(\t\"2\n!GetServerStreamingTextur"
-  "eResponse\022\r\n\005chunk\030\001 \001(\014\"1\n GetServerStr"
-  "eamingMessageRequest\022\r\n\005count\030\001 \001(\005\"4\n!G"
-  "etServerStreamingMessageResponse\022\017\n\007mess"
-  "age\030\001 \001(\t2\370\001\n\032ServerStreamingDemoService"
-  "\022i\n\nGetTexture\022*.grpcDemo.GetServerStrea"
-  "mingTextureRequest\032+.grpcDemo.GetServerS"
-  "treamingTextureResponse\"\0000\001\022o\n\020GetSimple"
-  "Message\022*.grpcDemo.GetServerStreamingMes"
-  "sageRequest\032+.grpcDemo.GetServerStreamin"
-  "gMessageResponse\"\0000\001B.Z,github.com/y-aka"
-  "hori-ramen/gRPCUE4Demo/protob\006proto3"
+  "eResponse\022\r\n\005chunk\030\001 \001(\0142\207\001\n\032ServerStrea"
+  "mingDemoService\022i\n\nGetTexture\022*.grpcDemo"
+  ".GetServerStreamingTextureRequest\032+.grpc"
+  "Demo.GetServerStreamingTextureResponse\"\000"
+  "0\001B.Z,github.com/y-akahori-ramen/gRPCUE4"
+  "Demo/protob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_serverStreamingDemo_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_serverStreamingDemo_2eproto = {
-  false, false, 556, descriptor_table_protodef_serverStreamingDemo_2eproto, "serverStreamingDemo.proto", 
-  &descriptor_table_serverStreamingDemo_2eproto_once, nullptr, 0, 4,
+  false, false, 338, descriptor_table_protodef_serverStreamingDemo_2eproto, "serverStreamingDemo.proto", 
+  &descriptor_table_serverStreamingDemo_2eproto_once, nullptr, 0, 2,
   schemas, file_default_instances, TableStruct_serverStreamingDemo_2eproto::offsets,
   file_level_metadata_serverStreamingDemo_2eproto, file_level_enum_descriptors_serverStreamingDemo_2eproto, file_level_service_descriptors_serverStreamingDemo_2eproto,
 };
@@ -539,391 +494,6 @@ void GetServerStreamingTextureResponse::InternalSwap(GetServerStreamingTextureRe
       file_level_metadata_serverStreamingDemo_2eproto[1]);
 }
 
-// ===================================================================
-
-class GetServerStreamingMessageRequest::_Internal {
- public:
-};
-
-GetServerStreamingMessageRequest::GetServerStreamingMessageRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:grpcDemo.GetServerStreamingMessageRequest)
-}
-GetServerStreamingMessageRequest::GetServerStreamingMessageRequest(const GetServerStreamingMessageRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  count_ = from.count_;
-  // @@protoc_insertion_point(copy_constructor:grpcDemo.GetServerStreamingMessageRequest)
-}
-
-inline void GetServerStreamingMessageRequest::SharedCtor() {
-count_ = 0;
-}
-
-GetServerStreamingMessageRequest::~GetServerStreamingMessageRequest() {
-  // @@protoc_insertion_point(destructor:grpcDemo.GetServerStreamingMessageRequest)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void GetServerStreamingMessageRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-}
-
-void GetServerStreamingMessageRequest::ArenaDtor(void* object) {
-  GetServerStreamingMessageRequest* _this = reinterpret_cast< GetServerStreamingMessageRequest* >(object);
-  (void)_this;
-}
-void GetServerStreamingMessageRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void GetServerStreamingMessageRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void GetServerStreamingMessageRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:grpcDemo.GetServerStreamingMessageRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  count_ = 0;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* GetServerStreamingMessageRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // int32 count = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* GetServerStreamingMessageRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:grpcDemo.GetServerStreamingMessageRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 count = 1;
-  if (this->_internal_count() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_count(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:grpcDemo.GetServerStreamingMessageRequest)
-  return target;
-}
-
-size_t GetServerStreamingMessageRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:grpcDemo.GetServerStreamingMessageRequest)
-  size_t total_size = 0;
-
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // int32 count = 1;
-  if (this->_internal_count() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_count());
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetServerStreamingMessageRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    GetServerStreamingMessageRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetServerStreamingMessageRequest::GetClassData() const { return &_class_data_; }
-
-void GetServerStreamingMessageRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<GetServerStreamingMessageRequest *>(to)->MergeFrom(
-      static_cast<const GetServerStreamingMessageRequest &>(from));
-}
-
-
-void GetServerStreamingMessageRequest::MergeFrom(const GetServerStreamingMessageRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:grpcDemo.GetServerStreamingMessageRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_count() != 0) {
-    _internal_set_count(from._internal_count());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void GetServerStreamingMessageRequest::CopyFrom(const GetServerStreamingMessageRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:grpcDemo.GetServerStreamingMessageRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetServerStreamingMessageRequest::IsInitialized() const {
-  return true;
-}
-
-void GetServerStreamingMessageRequest::InternalSwap(GetServerStreamingMessageRequest* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(count_, other->count_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata GetServerStreamingMessageRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_serverStreamingDemo_2eproto_getter, &descriptor_table_serverStreamingDemo_2eproto_once,
-      file_level_metadata_serverStreamingDemo_2eproto[2]);
-}
-
-// ===================================================================
-
-class GetServerStreamingMessageResponse::_Internal {
- public:
-};
-
-GetServerStreamingMessageResponse::GetServerStreamingMessageResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:grpcDemo.GetServerStreamingMessageResponse)
-}
-GetServerStreamingMessageResponse::GetServerStreamingMessageResponse(const GetServerStreamingMessageResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_message().empty()) {
-    message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
-      GetArenaForAllocation());
-  }
-  // @@protoc_insertion_point(copy_constructor:grpcDemo.GetServerStreamingMessageResponse)
-}
-
-inline void GetServerStreamingMessageResponse::SharedCtor() {
-message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-GetServerStreamingMessageResponse::~GetServerStreamingMessageResponse() {
-  // @@protoc_insertion_point(destructor:grpcDemo.GetServerStreamingMessageResponse)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void GetServerStreamingMessageResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void GetServerStreamingMessageResponse::ArenaDtor(void* object) {
-  GetServerStreamingMessageResponse* _this = reinterpret_cast< GetServerStreamingMessageResponse* >(object);
-  (void)_this;
-}
-void GetServerStreamingMessageResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void GetServerStreamingMessageResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void GetServerStreamingMessageResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:grpcDemo.GetServerStreamingMessageResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  message_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* GetServerStreamingMessageResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string message = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_message();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "grpcDemo.GetServerStreamingMessageResponse.message"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* GetServerStreamingMessageResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:grpcDemo.GetServerStreamingMessageResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string message = 1;
-  if (!this->_internal_message().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "grpcDemo.GetServerStreamingMessageResponse.message");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_message(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:grpcDemo.GetServerStreamingMessageResponse)
-  return target;
-}
-
-size_t GetServerStreamingMessageResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:grpcDemo.GetServerStreamingMessageResponse)
-  size_t total_size = 0;
-
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string message = 1;
-  if (!this->_internal_message().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_message());
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetServerStreamingMessageResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    GetServerStreamingMessageResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetServerStreamingMessageResponse::GetClassData() const { return &_class_data_; }
-
-void GetServerStreamingMessageResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<GetServerStreamingMessageResponse *>(to)->MergeFrom(
-      static_cast<const GetServerStreamingMessageResponse &>(from));
-}
-
-
-void GetServerStreamingMessageResponse::MergeFrom(const GetServerStreamingMessageResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:grpcDemo.GetServerStreamingMessageResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_message().empty()) {
-    _internal_set_message(from._internal_message());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void GetServerStreamingMessageResponse::CopyFrom(const GetServerStreamingMessageResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:grpcDemo.GetServerStreamingMessageResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool GetServerStreamingMessageResponse::IsInitialized() const {
-  return true;
-}
-
-void GetServerStreamingMessageResponse::InternalSwap(GetServerStreamingMessageResponse* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &message_, GetArenaForAllocation(),
-      &other->message_, other->GetArenaForAllocation()
-  );
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata GetServerStreamingMessageResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_serverStreamingDemo_2eproto_getter, &descriptor_table_serverStreamingDemo_2eproto_once,
-      file_level_metadata_serverStreamingDemo_2eproto[3]);
-}
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace grpcDemo
 PROTOBUF_NAMESPACE_OPEN
@@ -932,12 +502,6 @@ template<> PROTOBUF_NOINLINE ::grpcDemo::GetServerStreamingTextureRequest* Arena
 }
 template<> PROTOBUF_NOINLINE ::grpcDemo::GetServerStreamingTextureResponse* Arena::CreateMaybeMessage< ::grpcDemo::GetServerStreamingTextureResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::grpcDemo::GetServerStreamingTextureResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::grpcDemo::GetServerStreamingMessageRequest* Arena::CreateMaybeMessage< ::grpcDemo::GetServerStreamingMessageRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::grpcDemo::GetServerStreamingMessageRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::grpcDemo::GetServerStreamingMessageResponse* Arena::CreateMaybeMessage< ::grpcDemo::GetServerStreamingMessageResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::grpcDemo::GetServerStreamingMessageResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 
