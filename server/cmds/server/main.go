@@ -17,12 +17,16 @@ import (
 
 func main() {
 	port := flag.Int("port", 8080, "server port. default 8080")
+	resourceRoot := flag.String("resourceRoot", "", "server resource root directory")
 	flag.Parse()
 
 	grpcServer := grpc.NewServer()
 
 	unaryDemoService := service.NewUnaryDemoServiceServer()
 	proto.RegisterUnaryDemoServiceServer(grpcServer, unaryDemoService)
+
+	serverStreamingDemoService := service.NewServerStreamingDemoServiceServer(*resourceRoot)
+	proto.RegisterServerStreamingDemoServiceServer(grpcServer, serverStreamingDemoService)
 
 	log.Printf("Start server. port:%d", *port)
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))

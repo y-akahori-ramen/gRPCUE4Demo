@@ -23,6 +23,23 @@ void FgRPCDemoProjectModule::StartupModule()
 			}),
 			ECVF_Default
 		);
+
+		IConsoleManager::Get().RegisterConsoleCommand(
+			TEXT("ServerStreamingDemo"),
+			TEXT("ServerStreamingDemo ImageName(e.g Texture1.png)"),
+			FConsoleCommandWithArgsDelegate::CreateLambda([](const TArray<FString>& Args)
+			{
+				if(Args.Num() == 1)
+				{
+					FGRPCDemoCommands::ServerStreamingDemo(Args[0]);
+				}
+				else
+				{
+					UE_LOG(LogTemp, Error, TEXT("Invalid arg."));
+				}
+			}),
+			ECVF_Default
+		);
 	}
 }
 
