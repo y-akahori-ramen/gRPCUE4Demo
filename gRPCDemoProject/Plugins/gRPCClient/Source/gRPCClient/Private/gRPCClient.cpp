@@ -50,11 +50,11 @@ void FGRPCClient::RequestServerStreaming(FServerStreamingResponseDelegate respon
 	request.set_imagename(TCHAR_TO_UTF8(*imageName));
 
 	std::unique_ptr<grpc::ClientReader<grpcDemo::GetServerStreamingTextureResponse>> reader = stub->GetTexture(&context, request);
-	std::string bitMapData;
+	std::string recieveData;
 	grpcDemo::GetServerStreamingTextureResponse response;
 	while (reader->Read(&response))
 	{
-		bitMapData.append(response.chunk());
+		recieveData.append(response.chunk());
 		UE_LOG(LogTemp, Log, TEXT("ReceiveData:%dByte\n"), response.chunk().length());
 	}
 
@@ -63,8 +63,8 @@ void FGRPCClient::RequestServerStreaming(FServerStreamingResponseDelegate respon
 	TArray<uint8> responseData;
 	if (status.ok())
 	{
-		responseData.AddUninitialized(bitMapData.length());
-		FMemory::Memcpy(responseData.GetData(), bitMapData.c_str(), bitMapData.length());
+		responseData.AddUninitialized(recieveData.length());
+		FMemory::Memcpy(responseData.GetData(), recieveData.c_str(), recieveData.length());
 	}
 	else
 	{
@@ -72,4 +72,21 @@ void FGRPCClient::RequestServerStreaming(FServerStreamingResponseDelegate respon
 	}
 
 	responseDelegate.ExecuteIfBound(reulst, responseData);
+}
+
+FName UGRPCClientConfig::GetCategoryName() const
+{
+	return TEXT("DemoClient");
+}
+
+#if WITH_EDITOR
+FText UGRPCClientConfig::GetSectionText() const
+{
+	return FText::FromString(TEXT("gRPC client config"));
+}
+#endif
+
+TSharedPtr<IServiceClient> FGRPCClientFactory::CreateServiceClient()
+{
+	return MakeShareable(new FGRPCClient(GetDefault<UGRPCClientConfig>()->Endpoint));
 }

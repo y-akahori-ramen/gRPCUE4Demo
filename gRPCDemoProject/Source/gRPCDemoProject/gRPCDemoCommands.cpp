@@ -33,12 +33,12 @@ void FGRPCDemoCommands::ServerStreamingDemo(FString imageName)
 
 	FServerStreamingResponseDelegate responseDelegate;
 	responseDelegate.BindLambda(
-		[](FResponseResult result, TArray<uint8> bmpData)
+		[](FResponseResult result, TArray<uint8> pngData)
 		{
 			if (result.IsSuccess())
 			{
 				TSharedPtr<IImageWrapper> imageWrappger = FModuleManager::LoadModuleChecked<IImageWrapperModule>(FName("ImageWrapper")).CreateImageWrapper(EImageFormat::PNG);
-				imageWrappger->SetCompressed(bmpData.GetData(), bmpData.Num());
+				imageWrappger->SetCompressed(pngData.GetData(), pngData.Num());
 
 				TArray<uint8> rgbaData;
 				imageWrappger->GetRaw(ERGBFormat::RGBA, 8, rgbaData);

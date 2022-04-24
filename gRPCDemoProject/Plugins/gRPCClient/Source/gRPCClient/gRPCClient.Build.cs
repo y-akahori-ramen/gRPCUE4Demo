@@ -28,6 +28,7 @@ public class gRPCClient : ModuleRules
 				"Core",
 				"gRPCForUE4",
 				"ClientInterface",
+				"DeveloperSettings",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
