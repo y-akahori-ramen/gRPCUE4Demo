@@ -28,6 +28,9 @@ func main() {
 	serverStreamingDemoService := service.NewServerStreamingDemoServiceServer(*resourceRoot)
 	proto.RegisterServerStreamingDemoServiceServer(grpcServer, serverStreamingDemoService)
 
+	clientStreamingDemoService := service.NewClientStreamingDemoServiceServer(*resourceRoot)
+	proto.RegisterClinentStreamingDemoServiceServer(grpcServer, clientStreamingDemoService)
+
 	log.Printf("Start server. port:%d", *port)
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
