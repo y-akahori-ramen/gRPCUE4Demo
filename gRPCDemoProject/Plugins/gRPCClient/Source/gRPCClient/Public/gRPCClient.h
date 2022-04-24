@@ -1,6 +1,7 @@
 #pragma once
 #include <ClientInterface.h>
 #include <ClientFactory.h>
+#include "gRPCClient.generated.h"
 
 class FGRPCClient : public IServiceClient
 {
@@ -13,11 +14,23 @@ private:
 	const FString EndPoint;
 };
 
+UCLASS(config=gRPCClientConfig,defaultconfig)
+class UGRPCClientConfig : public UDeveloperSettings
+{
+	GENERATED_BODY()
+public:
+	virtual FName GetCategoryName() const override;
+
+#if WITH_EDITOR
+	virtual FText GetSectionText() const override;
+#endif
+
+	UPROPERTY(EditAnywhere, Config)
+	FString Endpoint;
+};
+
 class FGRPCClientFactory : public IServiceClientFactory
 {
 public:
-	virtual TSharedPtr<IServiceClient> CreateServiceClient() override
-	{
-		return MakeShareable(new FGRPCClient(TEXT("localhost:8000")));
-	}
+	virtual TSharedPtr<IServiceClient> CreateServiceClient() override;
 };

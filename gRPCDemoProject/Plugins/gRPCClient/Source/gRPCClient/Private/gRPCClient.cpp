@@ -73,3 +73,20 @@ void FGRPCClient::RequestServerStreaming(FServerStreamingResponseDelegate respon
 
 	responseDelegate.ExecuteIfBound(reulst, responseData);
 }
+
+FName UGRPCClientConfig::GetCategoryName() const
+{
+	return TEXT("DemoClient");
+}
+
+#if WITH_EDITOR
+FText UGRPCClientConfig::GetSectionText() const
+{
+	return FText::FromString(TEXT("gRPC client config"));
+}
+#endif
+
+TSharedPtr<IServiceClient> FGRPCClientFactory::CreateServiceClient()
+{
+	return MakeShareable(new FGRPCClient(GetDefault<UGRPCClientConfig>()->Endpoint));
+}
