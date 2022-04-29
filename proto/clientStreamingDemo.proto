@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "github.com/y-akahori-ramen/gRPCUE4Demo/proto";
+package grpcDemo;
+
+message UploadClientTextureRequest {
+  oneof data {
+    string imageName = 1;
+    bytes chunk = 2;
+  }
+}
+
+message UploadClientTextureResponse { uint32 size = 1; }
+
+service ClinentStreamingDemoService {
+  rpc UploadTexture(stream UploadClientTextureRequest) returns (UploadClientTextureResponse) {}
+}

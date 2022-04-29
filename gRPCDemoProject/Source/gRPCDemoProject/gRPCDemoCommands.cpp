@@ -6,6 +6,10 @@
 #include "DemoSubsystem.h"
 #include <ClientFactory.h>
 
+#include "ImageUtils.h"
+
+TOptional<FDelegateHandle> FGRPCDemoCommands::ScreenShotCapturedDelegateHandle;
+
 void FGRPCDemoCommands::UnaryDemo()
 {
 	TSharedPtr<IServiceClient> client = FServiceClientFactory::CreateServiceClient(TEXT("gRPCClient"));
@@ -62,6 +66,15 @@ void FGRPCDemoCommands::ServerStreamingDemo(FString imageName)
 	client->RequestServerStreaming(responseDelegate, imageName);
 }
 
+void FGRPCDemoCommands::ClientStreamingDemo()
+{
+	if (!ScreenShotCapturedDelegateHandle.IsSet())
+	{
+		ScreenShotCapturedDelegateHandle = UGameViewportClient::OnScreenshotCaptured().AddStatic(&FGRPCDemoCommands::OnScreenshotCaptured);
+	}
+	FScreenshotRequest::RequestScreenshot(false);
+}
+
 UWorld* FGRPCDemoCommands::GetAnyGameWorld()
 {
 	UWorld* world = nullptr;
@@ -91,4 +104,31 @@ UDemoSubsystem* FGRPCDemoCommands::GetDemoSubSystem()
 	{
 		return nullptr;
 	}
+}
+
+void FGRPCDemoCommands::OnScreenshotCaptured(int32 width, int32 height, const TArray<FColor>& colors)
+{
+	TSharedPtr<TArray64<uint8>> pngData = MakeShareable(new TArray64<uint8>);
+	FImageUtils::PNGCompressImageArray(width, height, colors, *pngData);
+
+	FString imageName;
+	FFileHelper::GenerateDateTimeBasedBitmapFilename(TEXT("ClientStreamingDemo"), TEXT(".png"), imageName);
+
+	FClientStreamingResponseDelegate responseDelegate;
+	responseDelegate.BindLambda(
+		[](FResponseResult result, uint32 size)
+		{
+			if(result.IsSuccess())
+			{
+				const FString message = FString::Printf(TEXT("Sent screenshot to server. size:%d"), size);
+				GEngine->AddOnScreenDebugMessage(0, 5, FColor::Yellow, *message);
+			}
+			else
+			{
+				GEngine->AddOnScreenDebugMessage(0, 5, FColor::Red, *FString::Printf(TEXT("Failed. %s"), *result.GetMessage()));
+			}
+		});
+
+	TSharedPtr<IServiceClient> client = FServiceClientFactory::CreateServiceClient(TEXT("gRPCClient"));
+	client->RequestClientStreaming(responseDelegate, imageName, pngData);
 }

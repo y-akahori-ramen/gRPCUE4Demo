@@ -40,6 +40,17 @@ void FgRPCDemoProjectModule::StartupModule()
 			}),
 			ECVF_Default
 		);
+
+
+		IConsoleManager::Get().RegisterConsoleCommand(
+			TEXT("ClientStreamingDemo"),
+			TEXT("ClientStreamingDemo SaveImageName(e.g SaveTexture1.png)"),
+			FConsoleCommandWithArgsDelegate::CreateLambda([](const TArray<FString>& Args)
+				{
+					FGRPCDemoCommands::ClientStreamingDemo();
+				}),
+			ECVF_Default
+		);
 	}
 }
 

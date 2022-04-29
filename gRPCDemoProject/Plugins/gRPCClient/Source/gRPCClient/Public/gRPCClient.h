@@ -9,7 +9,7 @@ public:
 	explicit FGRPCClient(FString endpont);
 	virtual void RequestUnary(FUnaryResponseDelegate responseDelegate) override;
 	virtual void RequestServerStreaming(FServerStreamingResponseDelegate responseDelegate, FString imageName) override;
-	
+	virtual void RequestClientStreaming(FClientStreamingResponseDelegate responseDelegate, FString imageName, TSharedPtr<TArray64<uint8>> imageData) override;
 private:
 	const FString EndPoint;
 };
