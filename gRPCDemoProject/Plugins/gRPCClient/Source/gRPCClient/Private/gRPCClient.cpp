@@ -60,11 +60,11 @@ void FGRPCClient::RequestServerStreaming(FServerStreamingResponseDelegate respon
 
 	const grpc::Status status = reader->Finish();
 	FResponseResult reulst(status.ok());
-	TArray<uint8> responseData;
+	TSharedPtr<TArray<uint8>> responseData = MakeShareable(new TArray<uint8>);
 	if (status.ok())
 	{
-		responseData.AddUninitialized(recieveData.length());
-		FMemory::Memcpy(responseData.GetData(), recieveData.c_str(), recieveData.length());
+		responseData->AddUninitialized(recieveData.length());
+		FMemory::Memcpy(responseData->GetData(), recieveData.c_str(), recieveData.length());
 	}
 	else
 	{

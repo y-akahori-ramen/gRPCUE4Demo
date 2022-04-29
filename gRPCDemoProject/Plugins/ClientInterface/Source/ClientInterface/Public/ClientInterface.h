@@ -25,7 +25,7 @@ private:
 };
 
 DECLARE_DELEGATE_TwoParams(FUnaryResponseDelegate, FResponseResult, FString);
-DECLARE_DELEGATE_TwoParams(FServerStreamingResponseDelegate, FResponseResult, TArray<uint8>);
+DECLARE_DELEGATE_TwoParams(FServerStreamingResponseDelegate, FResponseResult, TSharedPtr<TArray<uint8>>);
 
 class CLIENTINTERFACE_API IServiceClient
 {
