@@ -26,6 +26,7 @@ private:
 
 DECLARE_DELEGATE_TwoParams(FUnaryResponseDelegate, FResponseResult, FString);
 DECLARE_DELEGATE_TwoParams(FServerStreamingResponseDelegate, FResponseResult, TArray<uint8>);
+DECLARE_DELEGATE_TwoParams(FClientStreamingResponseDelegate, FResponseResult, uint32);
 
 class CLIENTINTERFACE_API IServiceClient
 {
@@ -33,4 +34,5 @@ public:
 	virtual ~IServiceClient() = default;
 	virtual void RequestUnary(FUnaryResponseDelegate responseDelegate) = 0;
 	virtual void RequestServerStreaming(FServerStreamingResponseDelegate responseDelegate, FString imageName) = 0;
+	virtual void RequestClientStreaming(FClientStreamingResponseDelegate responseDelegate, FString imageName, TSharedPtr<TArray64<uint8>> imageData) = 0;
 };
